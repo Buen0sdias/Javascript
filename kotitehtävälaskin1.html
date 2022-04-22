@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="Stylesheet" type="text/css" href="LaskinKotitehtava.css">
+        <title>HTML-laskin versio 0.1</title>
+        </head>
+        <body>
+            <div id="HTMLlaskin">
+                <button class="Buttoni" id="1" onClick="Luolaskukaava()">1</button>
+                <button class="Buttoni" id="2" onClick="Luolaskukaava()">2</button>
+                <button class="Buttoni" id="3" onClick="Luolaskukaava()">3</button>
+                <button class="Buttoni" id="+" onClick="Luolaskukaava()">+</button>
+                <br/>
+                <button class="Buttoni" id="4" onClick="Luolaskukaava()">4</button>
+                <button class="Buttoni" id="5" onClick="Luolaskukaava()">5</button>
+                <button class="Buttoni" id="6" onClick="Luolaskukaava()">6</button>
+                <button class="Buttoni" id="-" onClick="Luolaskukaava()">-</button>
+                <BR/>
+                <button class="Buttoni" id="7" onClick="Luolaskukaava()">7</button>
+                <button class="Buttoni" id="8" onClick="Luolaskukaava()">8</button>
+                <button class="Buttoni" id="9" onClick="Luolaskukaava()">9</button>
+                <button class="Buttoni" id="*" onClick="Luolaskukaava()">*</button>
+                <br/>
+                <button class="Buttoni" id="C" onClick="Luolaskukaava()">C</button>
+                <button class="Buttoni" id="0" onClick="Luolaskukaava()">0</button>
+                <button class="Buttoni" id="=" onClick="Luolaskukaava()">=</button>
+                <button class="Buttoni" id="/" onClick="Luolaskukaava()">/</button>
+                <br/>
+                <button class="Buttoni" id="BS" onClick="Luolaskukaava()">BS</button>
+                <button class="Buttoni" id="(" onClick="Luolaskukaava()">(</button>
+                <button class="Buttoni" id=")" onClick="Luolaskukaava()">)</button>
+                </div>
+                <h3 id="Kaava"></h3>
+                <h3 id="Tulos"></h3>
+                <script>
+                let laskukaava = "";
+                function luolaskukaavaa() {
+                    let buttonit = document.getElementByClassName("Buttoni");
+                    let i;
+                    for (i=0; i < buttonit.lenght; i++ ) {
+                        buttonit[i].onclick = function(e) {
+                            if (this.id=="=") {
+                                poistaViimeinenOper();
+                                document.getElementById("Tulos").InnerText=eval(laskukaava);
+                            } else if (this.id=="C") {
+                                laskukaava = "";
+                                document.getElementById("kaava").InnerText=laskukaava;
+                                document.getElementById("Tulos").InnerText="";
+                            } else if (This.id=="BS") {
+                                laskukaava = laskukaava.substr(0,laskukaava.lenght-1);
+                                document.getElementById("kaava").InnerText=laskukaava;
+                            } else {
+                                Laskukaava = laskukaava + this.Id;
+                                document.getElementById("kaava").InnerText=laskukaava;
+                            }
+                        };
+                    }
+                }
+                
+                function poistaViimeinenOper() {
+                    let operaattorit = "+-*/";
+                    let ViimeinenMrk = laskukaava.substr(laskukaava.lenght-1,laskukaava.lenght);
+                    //alert(laskukaava + " " + ViimeinenMrk + " " + operaattorit);
+                    if (operaattorit.indexOf(ViimeinenMrk)>0) {
+                        laskukaava =laskukaava.substr(0,Laskukaava.leight-1);
+                        document.getElementById("kaava").innerText=Laskukaava;
+                        //alert(laskukaava);
+                    }
+                }
+            </script>
+        </body>
+</html>
